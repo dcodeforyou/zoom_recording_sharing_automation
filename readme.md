@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/dcodeforyou/zoom_recording_sharing_automation">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -16,7 +16,7 @@
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/dcodeforyou/repo_name"><strong>Docs »</strong></a>
+    <a href="https://github.com/dcodeforyou/zoom_recording_sharing_automation"><strong>Docs »</strong></a>
     <br />
   </p>
 </div>
@@ -52,7 +52,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://github.com/dcodeforyou/zoom_recording_sharing_automation/images/video.mp4)
 
 Hello There!
 
@@ -121,11 +121,13 @@ You need to have [Node](https://www.nodejs.org/) and [npm](https://www.npmjs.com
    To setup service account you can refer [here](https://javascript.plainenglish.io/how-to-use-node-js-with-google-sheets-c256c26e10fc)
 
 5. To run the script 
-        - [] As a cron job (you can change the stop condition as per use):
+  
+        1. [] As a cron job (you can change the stop condition as per use):
         ```js
             node cronjob.js
         ```
-        - [] As a stand alone script (args are optional and sign in via gmail is default);
+
+        2. [] As a stand alone script (args are optional and sign in via gmail is default);
         ```js
             node main.js
             node main.js --via="zoom" 
@@ -140,7 +142,7 @@ You need to have [Node](https://www.nodejs.org/) and [npm](https://www.npmjs.com
 
 The result of this activity can be tested with received mails and updated spreadsheet.
 
- ![Received Mails](images/result/mails.png)  |  ![Updated Spreadsheet](images/result/spreadsheet.png)
+ ![Received Mails](https://github.com/dcodeforyou/zoom_recording_sharing_automation/images/result/mails.png)  |  ![Updated Spreadsheet](https://github.com/dcodeforyou/zoom_recording_sharing_automation/images/result/spreadsheet.png)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
