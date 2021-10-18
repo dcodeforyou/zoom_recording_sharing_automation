@@ -14,7 +14,7 @@
 <h3 align="center">Web-Automation: Zoom Recording Detail Sharing</h3>
 
   <p align="center">
-    project_description
+    Zoom Recording details sharing via web automation.
     <br />
     <a href="https://github.com/dcodeforyou/zoom_recording_sharing_automation"><strong>Docs »</strong></a>
     <br />
@@ -81,16 +81,16 @@ Here's Why:
 ### Built With
 
 <a href="https://nodejs.org/en/">
-    <img src="images/general/node.png" alt="node" width="60" height="60">
+    <img src="images/general/node.png" alt="node" width="80" height="80">
   </a>
 <a href="https://www.javascript.com/">
-    <img src="images/general/js.png" alt="js" width="60" height="60">
+    <img src="images/general/javascript.png" alt="js" width="80" height="80">
   </a>
 <a href="https://pptr.dev/">
-    <img src="images/general/puppeteer.png" alt="pptr" width="60" height="60">
+    <img src="images/general/puppeteer.png" alt="pptr" width="80" height="80">
   </a>
 <a href="https://developers.google.com/sheets/api">
-    <img src="images/general/spreadsheet.png" alt="sheets" width="60" height="60">
+    <img src="images/general/spreadsheet.png" alt="sheets" width="80" height="80">
   </a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
