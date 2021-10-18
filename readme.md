@@ -160,25 +160,23 @@ The result of this activity can be tested with received mails and updated spread
 ## Roadmap
 
   ## Avoided bot detection
-    Did a little tweak to avoid blocking of google account and untrustworthy browser detection
-with chrome launcher, axios, puppeteer and userAgent as there are chances of getting detected in
-puppeteer-stealth mode and incognito mode.
+  Did a little tweak to avoid blocking of google account and untrustworthy browser detection with chrome launcher, axios, puppeteer and userAgent as there are chances of getting detected in puppeteer-stealth mode and incognito mode.
     
   ## Automated Sign-in
-    Automated Zoom login via puppeteer.
-    > There are two sign in methods normal Zoom sign in and Gmail sign in. Method can be specified via command line args in [minimist](https://www.npmjs.com/package/minimist) fashion.
+  Automated Zoom login via puppeteer.
+  > There are two sign in methods normal Zoom sign in and Gmail sign in. Method can be specified via command line args in [minimist](https://www.npmjs.com/package/minimist) fashion.
 
   ## Recordings Scraping
-    Scrapped processed zoom recordings via Puppeteer. Filtering of meetings to avoid duplicate meetings. 
+  Scrapped processed zoom recordings via Puppeteer. Filtering of meetings to avoid duplicate meetings. 
 
   ## Automated mail forward via GMail
-    Forwards the mail via your GMail account to the address mentioned in .env.
+  Forwards the mail via your GMail account to the address mentioned in .env.
 
   ## Automated spreadsheet update
-    After sending mail, google spreadsheet with mentioned spreadsheet id will be updated with recording detail.
+  After sending mail, google spreadsheet with mentioned spreadsheet id will be updated with recording detail.
 
   ## Script as a CronJob
-    Script can be repeatedly run as a cronjob so if there is some meeting still in processing can be shared in next iteration.
+  Script can be repeatedly run as a cronjob so if there is some meeting still in processing can be shared in next iteration.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
