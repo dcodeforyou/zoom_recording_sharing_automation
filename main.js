@@ -252,7 +252,7 @@ async function run() {
         });
 
         // spreadsheet id
-        const spreadsheetId = '17e5HZ6pLxuGswhr1Pg40ROw4S5XLIcyuhyo_2kU5ZN4';
+        const spreadsheetId = process.env.SHEET_ID;
 
         let title = `Lecture of ${day}`;
         let link = text.split('Recording:')[1];
