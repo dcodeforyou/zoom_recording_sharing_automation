@@ -156,7 +156,7 @@ You need to have [Node](https://www.nodejs.org/) and [npm](https://www.npmjs.com
 
 The result of this activity can be tested with received mails and updated spreadsheet.
 
- ![Received Mails](images/result/mails.png)
+ ![Received Mails](images/result/emails.png)
 
  ![Updated Spreadsheet](images/result/spreadsheet.png)
 
