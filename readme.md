@@ -25,7 +25,7 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary><h4>Table of Contents</h4></summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -41,7 +41,16 @@
       </ul>
     </li>
     <li><a href="#usage-results">Usage Results</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li>
+      <a href="#roadmap">Roadmap</a>
+      <ul>
+        <li><a href="#avoided-bot-detection">Avoided bot detection</a></li>
+        <li><a href="#automated-sign-in">Automated sign-in</a></li>
+        <li><a href="#recordings-scraping">Recordings Scraping</a></li>
+        <li><a href="#automated-mail-forward-via-gmail">Automated main forward vis GMail</a></li>
+        <li><a href="#automated-spreadsheet-update">Automated spreadsheet update</a></li>
+      </ul>
+    </li>
     <li><a href="#extra">Extra</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -150,25 +159,25 @@ The result of this activity can be tested with received mails and updated spread
 <!-- ROADMAP -->
 ## Roadmap
 
-  # Avoided bot detection
+  ## Avoided bot detection
     Did a little tweak to avoid blocking of google account and untrustworthy browser detection
 with chrome launcher, axios, puppeteer and userAgent as there are chances of getting detected in
 puppeteer-stealth mode and incognito mode.
     
-  # Automated Sign-in
+  ## Automated Sign-in
     Automated Zoom login via puppeteer.
     > There are two sign in methods normal Zoom sign in and Gmail sign in. Method can be specified via command line args in [minimist](https://www.npmjs.com/package/minimist) fashion.
 
-  # Recordings Scraping
+  ## Recordings Scraping
     Scrapped processed zoom recordings via Puppeteer. Filtering of meetings to avoid duplicate meetings. 
 
-  # Automated mail forward via GMail
+  ## Automated mail forward via GMail
     Forwards the mail via your GMail account to the address mentioned in .env.
 
-  # Automated spreadsheet update
+  ## Automated spreadsheet update
     After sending mail, google spreadsheet with mentioned spreadsheet id will be updated with recording detail.
 
-  # Script as a CronJob
+  ## Script as a CronJob
     Script can be repeatedly run as a cronjob so if there is some meeting still in processing can be shared in next iteration.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
