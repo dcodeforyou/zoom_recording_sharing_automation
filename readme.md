@@ -7,8 +7,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/dcodeforyou/zoom_recording_sharing_automation/images/logo.png">
-    <img src="https://github.com/dcodeforyou/zoom_recording_sharing_automation/images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/dcodeforyou/zoom_recording_sharing_automation">
+    <img src="images/genral/logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Web-Automation: Zoom Recording Detail Sharing</h3>
