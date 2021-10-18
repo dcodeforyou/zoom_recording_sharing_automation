@@ -72,7 +72,7 @@ In this activity I have created an `automation` script for sharing today's and y
 Here's Why:
 * So after late night classes or meetings you don't have to wait for the recording to finish.
 * So you can completely forget about sharing the recording details `manually`.
-* So you can develop a new feature or chill out instead of waiting for recording to finish.
+* So you can develop a new feature or chill out instead of waiting for the recording to finish.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
