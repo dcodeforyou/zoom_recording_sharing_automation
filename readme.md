@@ -40,7 +40,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#usage-results">Usage Results</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#extra">Extra</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -121,13 +121,12 @@ You need to have [Node](https://www.nodejs.org/) and [npm](https://www.npmjs.com
    To setup service account you can refer [here](https://javascript.plainenglish.io/how-to-use-node-js-with-google-sheets-c256c26e10fc)
 
 5. To run the script 
-  
-        1. [] As a cron job (you can change the stop condition as per use):
+        1. [] As a cron job (you can change the stop condition as per use)
         ```js
             node cronjob.js
         ```
 
-        2. [] As a stand alone script (args are optional and sign in via gmail is default);
+        1. [] As a stand alone script (args are optional and sign in via gmail is default)
         ```js
             node main.js
             node main.js --via="zoom" 
