@@ -114,15 +114,15 @@ You need to have [Node](https://www.nodejs.org/) and [npm](https://www.npmjs.com
 
 ### Installation
 
-1. Clone the repo with
+1. Clone the repo with - 
    ```sh
    git clone https://github.com/github_username/repo_name.git
    ```
-2. Inside the project root directory install NPM packages with
+2. Inside the project root directory install NPM packages with -
    ```sh
    npm install
    ```
-3. Create a `.env` file under project root directory and enter your credentials
+3. Create a `.env` file under project root directory and enter your credentials -
    ```sh
    SHEET_ID=google-spreadsheet-id
    GOOGLE_SERVICE_ACCOUNT_EMAIL=service-account-email
@@ -133,9 +133,9 @@ You need to have [Node](https://www.nodejs.org/) and [npm](https://www.npmjs.com
    ZOOM_PASSWORD=zoom-password
    ```
 4. Create a service account and download credentials json at [Google Developer Console](https://console.cloud.google.com/) and save it under project root directory with name `keys.json`. 
-   To setup service account you can refer [here](https://javascript.plainenglish.io/how-to-use-node-js-with-google-sheets-c256c26e10fc)
+   To setup service account you can refer [here](https://javascript.plainenglish.io/how-to-use-node-js-with-google-sheets-c256c26e10fc).
 
-5. To run the script 
+5. To run the script - 
    * As a cron job (you can change the stop condition as per use)
         ```js
             node cronjob.js
