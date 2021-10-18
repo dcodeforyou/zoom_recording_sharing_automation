@@ -156,7 +156,9 @@ You need to have [Node](https://www.nodejs.org/) and [npm](https://www.npmjs.com
 
 The result of this activity can be tested with received mails and updated spreadsheet.
 
- ![Received Mails](https://github.com/dcodeforyou/zoom_recording_sharing_automation/images/result/mails.png)  |  ![Updated Spreadsheet](https://github.com/dcodeforyou/zoom_recording_sharing_automation/images/result/spreadsheet.png)
+ ![Received Mails](images/result/mails.png)
+
+ ![Updated Spreadsheet](images/result/spreadsheet.png)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
