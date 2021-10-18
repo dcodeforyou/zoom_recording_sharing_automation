@@ -84,13 +84,16 @@ Here's Why:
     <img src="images/general/node.png" alt="node" width="100" height="80">
 </a>
 &nbsp;
+&nbsp;
 <a href="https://www.javascript.com/">
     <img src="images/general/javascript.png" alt="js" width="80" height="80">
 </a>
 &nbsp;
+&nbsp;
 <a href="https://pptr.dev/">
     <img src="images/general/puppeteer.png" alt="pptr" width="60" height="80">
 </a>
+&nbsp;
 &nbsp;
 <a href="https://developers.google.com/sheets/api">
     <img src="images/general/spreadsheet.png" alt="sheets" width="60" height="80">
