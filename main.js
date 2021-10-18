@@ -73,7 +73,7 @@ async function run() {
       console.log(doneMeetings);
       let done = JSON.parse(doneMeetings);
 
-      let meetings = await page.evaluate(() => {
+      let meetings = await page.evaluate(function(){
         let results = [];
         let items = document.querySelectorAll('div.row-container div.clearfix');
         let date = new Date();
@@ -155,7 +155,7 @@ async function run() {
 
       // await page.waitForTimeout(5000);
 
-      let shareButtons = await page.evaluate(() => {
+      let shareButtons = await page.evaluate(function(){
         let elems = document.querySelectorAll(
           'a.btn.btn-default.sharemeet_from_myrecordinglist',
         )
@@ -200,11 +200,11 @@ async function run() {
         // await page.click("input[aria-describedby='password_label'] + span.zm-switch__core");
         await page.click('button.copy-to-clipboard');
         //ALLOW CLIPBOARD COPY ACCESS
-        page.on('request', async (req) => {
+        page.on('request', async function(req){
           await req.continue();
         })
 
-        const text = await page.evaluate(() => {
+        const text = await page.evaluate(function() {
           let copiedText = navigator.clipboard.readText();
           return copiedText;
         })
@@ -335,8 +335,12 @@ async function run() {
     }
 
     launch()
-      .then(() => console.log('ok'))
-      .catch((err) => console.error(err))
+      .then(function(){
+        console.log('ok');
+      })
+      .catch(function(err){
+        console.error(err);
+      })
     xvfb.stop(function (err) {
       // Xvfb stopped
     })
