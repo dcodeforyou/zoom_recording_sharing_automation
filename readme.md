@@ -51,7 +51,7 @@
         <li><a href="#automated-spreadsheet-update">Automated spreadsheet update</a></li>
       </ul>
     </li>
-    <li><a href="#extra">Extra</a></li>
+    <li><a href="#extra-things-to-try">Extra Things to Try</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
