@@ -61,7 +61,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/dcodeforyou/zoom_recording_sharing_automation/images/video.mp4)
+![Demo Video](images/zoom-recording-automation.gif)
 
 Hello There!
 
