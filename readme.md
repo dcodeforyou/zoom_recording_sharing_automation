@@ -61,7 +61,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Demo Video](images/zoom-recording-automation.gif)
+![Demo Video](images/zoom-recording-automation.mp4)
 
 Hello There!
 
