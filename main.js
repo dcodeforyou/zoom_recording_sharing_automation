@@ -20,7 +20,7 @@ async function run() {
 
     async function launch() {
       const chrome = await chromeLauncher.launch(chromeConfig);
-      console.log({ chrome });
+      // console.log({ chrome }); // to see chrome launcher instance properties
       const response = await axios.get(
         `http://localhost:${chrome.port}/json/version`,
       )
@@ -70,12 +70,111 @@ async function run() {
       }
 
       let doneMeetings = fs.readFileSync('./done.json', 'utf-8');
-      console.log(doneMeetings);
       let done = JSON.parse(doneMeetings);
 
-      let meetings = await page.evaluate(function(){
-        let results = [];
-        let items = document.querySelectorAll('div.row-container div.clearfix');
+      await page.exposeFunction("clickAt", clickAt);
+      async function clickAt(selector){
+        await page.click(selector);
+        await page.waitForTimeout(10000);
+      }
+      
+      //USE THIS TO CONSOLE LOG VALUES INSIDE EVALUATE METHOD
+        // await page.exposeFunction("con", con);
+        // function con(value){
+        //   console.log(value);
+        // }
+
+
+      await page.exposeFunction("getMeetings", getMeetings);
+      async function getMeetings(today, yesterday){
+         let meetings = await page.evaluate(async function recall(today, yesterday){
+            let results = [];
+            let items = document.querySelectorAll('div.row-container div.clearfix');
+            let shareButtons = [];
+            for (let i = 0; i < items.length; i++) {
+              let meetingStartTime = items[i].querySelector('div.mtg-start')[
+                'innerText'
+              ];
+              let shareButton = await items[i].querySelector(
+                  'a.btn.btn-default.sharemeet_from_myrecordinglist',
+              );
+
+              if (meetingStartTime.includes(today)) {                
+                results.push(meetingStartTime);
+                if(shareButton){
+                  shareButtons.push(getCssPath(shareButton));
+                }else{
+                  shareButtons.push(undefined);
+                }
+
+                if(i == items.length - 1){
+                  let nextLi = document.querySelector("li.next");
+                    if(!nextLi.classList.contains('disabled')){
+                      await clickAt("li.next > a");
+                      items = document.querySelectorAll('div.row-container div.clearfix');
+                      i = -1;
+                      continue;
+                    }
+                }
+    
+              } else if (meetingStartTime.includes(yesterday)) {
+                results.push(meetingStartTime);
+                if(shareButton){
+                  shareButtons.push(getCssPath(shareButton));
+                }else{
+                  shareButtons.push(undefined);
+                }
+    
+                if(i == items.length - 1){
+                  let nextLi = document.querySelector("li.next");
+                    if(!nextLi.contains('disabled')){
+                      await clickAt("li.next > a");
+                      items = document.querySelectorAll('div.row-container div.clearfix');
+                      i = -1;
+                      continue;
+                    }
+                }
+    
+              }else{
+                break;
+              }
+            }
+
+            function getCssPath(el) {
+              if (!(el instanceof Element)) 
+                return;
+              const path = [];
+              while (el.nodeType === Node.ELEMENT_NODE) {
+                let selector = el.nodeName.toLowerCase();
+                if (el.id) {
+                  selector += '#' + el.id;
+                  path.unshift(selector);
+                  break;
+                } else {
+                  let sib = el, nth = 1;
+                  while ((sib = sib.previousElementSibling)) {
+                    if (sib.nodeName.toLowerCase() == selector) 
+                      nth++;
+                  }
+                  if (nth != 1) 
+                    selector += ':nth-of-type(' + nth + ')';
+                }
+                path.unshift(selector);
+                el = el.parentNode;
+              }
+              return path.join(' > ');
+            }
+        
+            return {
+              results,
+              shareButtons
+            };
+         }, today, yesterday);
+         return meetings;
+      }
+
+      let meetings = await page.evaluate(async function(){
+        // let items = document.querySelectorAll('div.row-container div.clearfix');
         let date = new Date();
         const monthNames = [
           'Jan',
@@ -121,83 +220,35 @@ async function run() {
 
         let yesterday = `${monthNames[month]} ${day}, ${year}`;
 
-        console.log(today);
-        console.log(yesterday);
+        let meetings = await getMeetings(today, yesterday);
 
-        for (let i = 0; i < items.length; i++) {
-          let meetingStartTime = items[i].querySelector('div.mtg-start')[
-            'innerText'
-          ]
-          if (meetingStartTime.includes(today)) {
-            if (
-              items[i].querySelector(
-                'div.rec-action a.sharemeet_from_myrecordinglist',
-              )?.innerText == 'Share...'
-            ) {
-              results.push(meetingStartTime)
-            }
-          } else if (meetingStartTime.includes(yesterday)) {
-            if (
-              items[i].querySelector(
-                'div.rec-action a.sharemeet_from_myrecordinglist',
-              )?.innerText == 'Share...'
-            ) {
-              results.push(meetingStartTime)
-            }
+        return meetings;
+      });
+
+      await page.click(meetings.shareButtons[meetings.shareButtons.length - 1]);
+
+      await page.waitForTimeout(10000);
+
+      //CANNOT FILTER BECAUSE IT WILL SHRINK ARRAY SIZE AND DISTURB NAVIGATION
+      // meetings = meetings.filter((meet) => !done.includes(meet));
+
+      //HOW MANY TIMES WE HAVE TO BACK
+
+      for (let i = meetings.results.length - 1; i >= 0; i--) {
+        if(!meetings.shareButtons[i] || done.includes(meetings.results[i])){
+          if(i != 0 && i % 15 == 0){
+            await page.click("ul.dynamo_pagination > li:not(.next) > a");
+            await page.waitForTimeout(7000);
           }
-        }
-        return results;
-      })
-
-      console.log(meetings);
-
-      meetings = meetings.filter((meet) => !done.includes(meet));
-
-      // await page.waitForTimeout(5000);
-
-      let shareButtons = await page.evaluate(function(){
-        let elems = document.querySelectorAll(
-          'a.btn.btn-default.sharemeet_from_myrecordinglist',
-        )
-        let buttonsList = []
-        for (let i = 0; i < elems.length; i++) {
-          buttonsList.push(cssPath(elems[i]))
+          continue;
         }
 
-        return buttonsList;
-
-        function cssPath(el) {
-          if (!(el instanceof Element)) 
-            return;
-          const path = [];
-          while (el.nodeType === Node.ELEMENT_NODE) {
-            let selector = el.nodeName.toLowerCase();
-            if (el.id) {
-              selector += '#' + el.id;
-              path.unshift(selector);
-              break;
-            } else {
-              let sib = el, nth = 1;
-              while ((sib = sib.previousElementSibling)) {
-                if (sib.nodeName.toLowerCase() == selector) 
-                  nth++;
-              }
-              if (nth != 1) 
-                selector += ':nth-of-type(' + nth + ')';
-            }
-            path.unshift(selector);
-            el = el.parentNode;
-          }
-          return path.join(' > ');
-        }
-      })
-
-      for (let i = 0; i < meetings.length; i++) {
-        await page.click(shareButtons[i]);
+        await page.click(meetings.shareButtons[i]);
         await page.waitForTimeout(5000);
         await page.click('body');
         //to turn off password protection uncomment below line
         // await page.click("input[aria-describedby='password_label'] + span.zm-switch__core");
+        await page.waitForTimeout(4000);
         await page.click('button.copy-to-clipboard');
         //ALLOW CLIPBOARD COPY ACCESS
         page.on('request', async function(req){
@@ -208,28 +259,30 @@ async function run() {
           let copiedText = navigator.clipboard.readText();
           return copiedText;
         })
-        console.log(text);
         await page.click('div.dialog-footer button span.zm-button__slot');
 
         //MAIL FORWARD - DONE
         await sendEmail(
-          'paharwar@gmail.com   djdushyantsurya@gmail.com',
-          'TEST LINK FORWARD',
+          process.env.to,
+          subject,
           text,
         );
 
         console.log('mail sent');
 
         //EXCEL ME LINK DALO
-        await addLinksToSpreadSheet(meetings[i], text);
+        await addLinksToSpreadSheet(meetings.results[i], text);
 
         console.log('spreadsheet updated');
 
-        done = [...done, ...meetings];
+        done = [...done, meetings.results[i]];
 
         //writing done meetings in done file
 
         // await page.click(text);
+        if(i != 0 && i % 15 == 0){
+            await page.click("ul.dynamo_pagination > li:not(.next) > a");
+        }
         await page.waitForTimeout(10000);
       }
 

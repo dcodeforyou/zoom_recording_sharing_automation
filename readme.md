@@ -51,12 +51,11 @@
         <li><a href="#automated-spreadsheet-update">Automated spreadsheet update</a></li>
       </ul>
     </li>
+    <li><a href="#possible-failures">Possible Failures</a></li>
     <li><a href="#extra-things-to-try">Extra Things to Try</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
-
-
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -185,6 +184,17 @@ The result of this activity can be tested with received mails and updated spread
 
   ## Script as a CronJob
   - [x] Script can be repeatedly run as a cronjob so if there is some meeting still in processing can be shared in next iteration.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- Failures -->
+## Possible Failures
+
+ * Slow internet.
+ * Server took too long to response. Default timeout is 30000 ms.
+ * Websites might change their implementation.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
